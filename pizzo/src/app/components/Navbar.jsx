@@ -16,7 +16,7 @@ function Navbar() {
       <Button colorScheme="gray.900">
         <Link href='/home'><Text fontSize='xl'>Home</Text></Link>
       </Button>
-      <Button colorScheme="gray.900" ><Text fontSize='xl'>Menu</Text></Button>
+      <Button colorScheme="gray.900" > <Link href='/menu'><Text fontSize='xl'>Menu</Text></Link></Button>
       <Button colorScheme="red" marginRight={{base:0,md:2,lg:3}}><BsBasket /></Button>
     </ButtonGroup>
   </Flex>
