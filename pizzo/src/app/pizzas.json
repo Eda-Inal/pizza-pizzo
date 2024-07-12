@@ -1,0 +1,57 @@
+
+[
+    {
+        "id": 1,
+        "name": "Margherita",
+        "image": {
+            "src": "/1.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 2,
+        "name": "Bacon",
+        "image": {
+            "src": "/2.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 3,
+        "name": "Super mix",
+        "image": {
+            "src": "/3.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 4,
+        "name": "Neapolitan",
+        "image": {
+            "src": "/4.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 5,
+        "name": "Onion",
+        "image": {
+            "src": "/5.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 6,
+        "name": "Pepperoni",
+        "image": {
+            "src": "/6.jpg",
+            "width": 200,
+            "height": 200
+        }
+    }
+]
