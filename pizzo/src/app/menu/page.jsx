@@ -38,7 +38,7 @@ height = {item.image.height}
    </CardBody>
 
    <CardFooter>
-     <Button variant='solid' colorScheme='red'>
+     <Button variant='solid' px={7} colorScheme='red'>
        Add
      </Button>
    </CardFooter>
