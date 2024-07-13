@@ -3,6 +3,7 @@
     {
         "id": 1,
         "name": "Margherita",
+        "price": "7$",
         "image": {
             "src": "/1.jpg",
             "width": 200,
@@ -12,6 +13,7 @@
     {
         "id": 2,
         "name": "Bacon",
+        "price": "10$",
         "image": {
             "src": "/2.jpg",
             "width": 200,
@@ -21,6 +23,7 @@
     {
         "id": 3,
         "name": "Super mix",
+        "price": "9$",
         "image": {
             "src": "/3.jpg",
             "width": 200,
@@ -30,6 +33,7 @@
     {
         "id": 4,
         "name": "Neapolitan",
+        "price": "6$",
         "image": {
             "src": "/4.jpg",
             "width": 200,
@@ -39,6 +43,7 @@
     {
         "id": 5,
         "name": "Onion",
+        "price": "7$",
         "image": {
             "src": "/5.jpg",
             "width": 200,
@@ -48,6 +53,7 @@
     {
         "id": 6,
         "name": "Pepperoni",
+        "price": "9$",
         "image": {
             "src": "/6.jpg",
             "width": 200,

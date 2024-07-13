@@ -29,7 +29,11 @@ function Home() {
 
     <Box mt={8}>
       <Center>
-        <Button px={20} py={8} colorScheme="red"><Text fontSize='3xl'>SALE</Text></Button> 
+        <Flex>
+        <Button  py={8} mr={2} _hover={{bg:"yellow",color:"black"}} colorScheme="black" border={2} borderStyle="solid" borderColor="white" ><Text fontSize='xl'>Order</Text></Button> 
+        <Button  py={8} colorScheme="black" _hover={{bg:"yellow",color:"black"}}  border={2} borderStyle="solid" borderColor="white"><Text fontSize='xl'>View menu</Text></Button> 
+        </Flex>
+     
       </Center>
  
   <Grid templateColumns='repeat(2, 1fr)' marginX={7}  mt={8} hidden>

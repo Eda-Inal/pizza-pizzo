@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-import { Card, CardHeader,Grid, CardBody, CardFooter,Stack,Heading,Text ,Button} from '@chakra-ui/react'
+import { Card, CardHeader,Grid,Box, CardBody, CardFooter,Stack,Heading,Text ,Button, Flex} from '@chakra-ui/react'
 import Image from 'next/image'
 import pizzas from "../pizzas.json";
 function Menu() {
  
   return (
     <div >
-      <Grid  templateColumns={{base :'repeat(1, 1fr)',md :'repeat(2, 1fr)',lg :'repeat(3, 1fr)'} } marginTop={2}  gap={6} marginX={7} >
+      <Grid templateColumns={{base :'repeat(1, 1fr)',md :'repeat(2, 1fr)',xl :'repeat(3, 1fr)'} } marginTop={2}  gap={6} marginX={7} >
       {pizzas.map((item,index)=>(
      
      <Card
@@ -38,9 +38,15 @@ height = {item.image.height}
    </CardBody>
 
    <CardFooter>
-     <Button variant='solid' px={7} colorScheme='red'>
-       Add
+    <Flex>
+      <Box mr={8}><Text fontSize="2xl">{item.price}</Text>
+        </Box>
+       <Button variant='solid' px={7} colorScheme='red'>
+        <Text fontSize="xl">  Add</Text>
+    
      </Button>
+    </Flex>
+    
    </CardFooter>
  </Stack>
 </Card>
