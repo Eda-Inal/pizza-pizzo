@@ -8,7 +8,7 @@ function Menu() {
  
   return (
     <div >
-      <Grid templateColumns={{base :'repeat(1, 1fr)',md :'repeat(2, 1fr)',lg:'repeat(3, 1fr)',xl :'repeat(4, 1fr)'} } marginTop={2}  gap={6} marginX={7} >
+      <Grid templateColumns={{base :'repeat(1, 1fr)',md :'repeat(2, 1fr)',lg:'repeat(2, 1fr)',xl :'repeat(3, 1fr)'} } marginTop={2}  gap={6} marginX={7} >
       {pizzas.map((item,index)=>(
      
      <Card
