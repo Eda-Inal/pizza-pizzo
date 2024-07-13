@@ -8,7 +8,7 @@ function Menu() {
  
   return (
     <div >
-      <Grid templateColumns={{base :'repeat(1, 1fr)',md :'repeat(2, 1fr)',xl :'repeat(3, 1fr)'} } marginTop={2}  gap={6} marginX={7} >
+      <Grid templateColumns={{base :'repeat(1, 1fr)',md :'repeat(2, 1fr)',lg:'repeat(3, 1fr)',xl :'repeat(4, 1fr)'} } marginTop={2}  gap={6} marginX={7} >
       {pizzas.map((item,index)=>(
      
      <Card
@@ -21,8 +21,8 @@ function Menu() {
  <Image
    objectFit='cover'
  maxW={{ base: '200px', sm: '200px' }}
-width = {item.image.width}
-height = {item.image.height}
+width = {150}
+height = {150}
    src={item.image.src}
    alt='Caffe Latte'
  />

@@ -2,14 +2,15 @@
 [
     {
         "id": 1,
-        "name": "Margherita",
-        "price": "7$",
+        "name": "Salami",
+        "price": "10$",
         "image": {
-            "src": "/1.jpg",
+            "src": "/salami.jpg",
             "width": 200,
             "height": 200
         }
     },
+  
     {
         "id": 2,
         "name": "Bacon",
@@ -53,9 +54,65 @@
     {
         "id": 6,
         "name": "Pepperoni",
-        "price": "9$",
+        "price": "10$",
         "image": {
-            "src": "/6.jpg",
+            "src": "/mix.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 7,
+        "name": "Pesto",
+        "price": "8$",
+        "image": {
+            "src": "/pesto.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },  {
+        "id": 8,
+        "name": "Pepper",
+        "price": "5$",
+        "image": {
+            "src": "/pepper.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },  {
+        "id": 9,
+        "name": "Meet",
+        "price": "13$",
+        "image": {
+            "src": "/meetmix.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },  
+    {
+        "id": 10,
+        "name": "Margherita",
+        "price": "7$",
+        "image": {
+            "src": "/1.jpg",
+            "width": 200,
+            "height": 200
+        }
+    }, {
+        "id": 11,
+        "name": "Vegy",
+        "price": "10$",
+        "image": {
+            "src": "/vegy.jpg",
+            "width": 200,
+            "height": 200
+        }
+    },  {
+        "id": 12,
+        "name": "White mush",
+        "price": "10$",
+        "image": {
+            "src": "/whitemas.jpg",
             "width": 200,
             "height": 200
         }

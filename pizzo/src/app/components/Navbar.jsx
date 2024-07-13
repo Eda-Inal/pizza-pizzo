@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
-import { Flex, Spacer,Box,Heading,ButtonGroup,Button} from '@chakra-ui/react'
+import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Show,Hide} from '@chakra-ui/react'
 import { BsBasket } from "react-icons/bs";
 import { Text } from '@chakra-ui/react'
 import Home from '../page';
@@ -20,12 +20,17 @@ function Navbar() {
      
     </Box>
     <Spacer />
-    <ButtonGroup gap={{base:0,sm:1,md:2,lg:3}}>
+    <ButtonGroup>
       <Button colorScheme="gray.900">
         <Link href='/home'><Text fontSize='xl'>Home</Text></Link>
       </Button>
-      <Button colorScheme="gray.900" > <Link href='/menu'><Text fontSize='xl'>Menu</Text></Link></Button>
-      <Button colorScheme="red" px={6} marginRight={{base:0,md:2,lg:3}}><BsBasket /></Button>
+ 
+<Hide below='md'>
+<Button colorScheme="gray.900" > <Link href='/menu'><Text fontSize='xl'>Menu</Text></Link></Button>
+</Hide>
+    
+      <Button colorScheme="red" > <Link href="/" ><Text fontSize='xl'>Log in</Text></Link></Button>
+      <Button colorScheme="red" marginRight={{base:0,md:1,lg:2}}><BsBasket /></Button>
     </ButtonGroup>
   </Flex>
   )
