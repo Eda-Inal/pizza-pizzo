@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import { Card, CardHeader,Grid,Box, CardBody, CardFooter,Stack,Heading,Text ,Button, Flex} from '@chakra-ui/react'
+import { Card, CardHeader,Grid,Box, CardBody, CardFooter,Stack,Heading,Text ,Button, Flex,Spacer} from '@chakra-ui/react'
 import Image from 'next/image'
 import pizzas from "../pizzas.json";
 function Menu() {
@@ -41,7 +41,8 @@ height = {150}
     <Flex>
       <Box mr={8}><Text fontSize="2xl">{item.price}</Text>
         </Box>
-       <Button variant='solid' px={7} colorScheme='red'>
+    
+       <Button variant='solid' px={7}  colorScheme='red'>
         <Text fontSize="xl">  Add</Text>
     
      </Button>

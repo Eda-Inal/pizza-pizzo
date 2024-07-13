@@ -1,11 +1,12 @@
 import React from 'react'
 import Link from 'next/link';
-import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Show,Hide} from '@chakra-ui/react'
+import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Show,Hide, Tooltip} from '@chakra-ui/react'
 import { BsBasket } from "react-icons/bs";
 import { Text } from '@chakra-ui/react'
 import Home from '../page';
 import Image from 'next/image';
 import logo1 from "../../../public/logo.png"
+import { color } from 'framer-motion';
 
 
 function Navbar() {
@@ -21,16 +22,25 @@ function Navbar() {
     </Box>
     <Spacer />
     <ButtonGroup>
-      <Button colorScheme="gray.900">
-        <Link href='/home'><Text fontSize='xl'>Home</Text></Link>
+      <Button colorScheme="gray.900"  >
+        <Link href='/home'><Text _hover={{color:"red.400"}}  fontSize='xl'>Home</Text></Link>
       </Button>
  
 <Hide below='md'>
-<Button colorScheme="gray.900" > <Link href='/menu'><Text fontSize='xl'>Menu</Text></Link></Button>
+<Button colorScheme="gray.900" > <Link href='/menu'><Text _hover={{color:"red.400"}}  fontSize='xl'>Menu</Text></Link></Button>
 </Hide>
     
       <Button colorScheme="red" > <Link href="/login" ><Text fontSize='xl'>Log in</Text></Link></Button>
-      <Button colorScheme="red" marginRight={{base:0,md:1,lg:2}}><BsBasket /></Button>
+      <Button colorScheme="red" _hover={{}} marginRight={{ base: 0, md: 1, lg: 2 }} position="relative">
+          <Tooltip label="go to basket" fontSize="md">
+            <Link href="/basket">
+              <BsBasket />
+              <Box position="absolute" top="-1" right="-1" backgroundColor="red.500" borderRadius="full" width="20px" height="20px" display="flex" alignItems="center" justifyContent="center">
+                <Text fontSize="xs" color="white">0</Text>
+              </Box>
+            </Link>
+          </Tooltip>
+        </Button>
     </ButtonGroup>
   </Flex>
   )
