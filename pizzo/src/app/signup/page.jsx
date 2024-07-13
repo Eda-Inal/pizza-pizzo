@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button } from '@chakra-ui/react'
+import Link from 'next/link'
 function Signup() {
   return (
     <Container mt={10} centerContent>
@@ -19,7 +20,7 @@ function Signup() {
   </FormControl>
       </Center>
       <Center>
-      <Button mt={6} colorScheme='red'>Sign Up</Button>
+      <Button mt={6} colorScheme='green'> <Link href="/profile">Sign Up </Link ></Button>
       </Center>
      
     </Box>
