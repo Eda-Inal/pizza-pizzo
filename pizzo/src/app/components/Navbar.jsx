@@ -7,9 +7,12 @@ import Home from '../page';
 import Image from 'next/image';
 import logo1 from "../../../public/logo.png"
 import { color } from 'framer-motion';
+import { useSelector } from 'react-redux';
+
 
 
 function Navbar() {
+  const total = useSelector((state) => state.pizza.total)
   return (
     <Flex minWidth='max-content' p={2} alignItems='center' bg="gray.900" color="white"   gap='2'>
     <Box p='2'>
@@ -36,7 +39,7 @@ function Navbar() {
             <Link href="/basket">
               <BsBasket />
               <Box position="absolute" top="-1" right="-1" backgroundColor="red.500" borderRadius="full" width="20px" height="20px" display="flex" alignItems="center" justifyContent="center">
-                <Text fontSize="xs" color="white">0</Text>
+                <Text fontSize="xs" color="white">{total}</Text>
               </Box>
             </Link>
           </Tooltip>

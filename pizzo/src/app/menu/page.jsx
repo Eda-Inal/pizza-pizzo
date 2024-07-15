@@ -4,12 +4,13 @@ import { Card, CardHeader,Grid,Box, CardBody, CardFooter,Stack,Heading,Text ,But
 import Image from 'next/image'
 import pizzas from "../pizzas.json";
 import { useDispatch } from 'react-redux';
-import { addBasket } from '../redux/pizzasSlice';
+import { addBasket,calculateTotal } from '../redux/pizzasSlice';
 function Menu() {
   const dispatch = useDispatch();
 
   const handleBasket =(item)=>{
-    dispatch(addBasket(item))
+    dispatch(addBasket(item));
+    dispatch(calculateTotal())
   }
  
   return (
