@@ -4,6 +4,8 @@ import { Providers } from "./provider";
 import Navbar from "./components/Navbar";
 import theme from "./theme";
 import { ChakraProvider } from "@chakra-ui/react";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 
 import "./globals.css";
@@ -16,12 +18,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Provider store={store}>
         <ChakraProvider theme={theme}>
    
-        <Navbar/>
-        {children}
+   <Navbar/>
+   {children}
+ 
+   </ChakraProvider>
+        </Provider>
       
-        </ChakraProvider>
       
         </body>
     </html>

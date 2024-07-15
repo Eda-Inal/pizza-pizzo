@@ -1,18 +1,19 @@
+
 import React from 'react'
 import { Box,Button,Grid,Text,Center, Flex, Show, Hide } from "@chakra-ui/react"
 import bg from"../../../public/bgpizzo.jpg"
 import { BsBasket } from "react-icons/bs";
 import Image from 'next/image'
 import styles from "./styles.module.css"
-import sale1 from "../../../public/1.jpg"
-import sale2 from "../../../public/4.jpg"
 import { SiCodechef } from "react-icons/si";
+import { useSelector } from 'react-redux';
 
 
 function Home() {
+  
   return (
     <div>
-      
+ 
  <Grid mt={10} templateColumns={{base :'repeat(1, 1fr)',lg :'repeat(2, 1fr)'}} gap={16} marginX={5}>
  <Box  width='100%'   >
  
