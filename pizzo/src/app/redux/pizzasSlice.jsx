@@ -29,11 +29,15 @@ export const pizzasSlice = createSlice({
         },
         decreaseAmount: (state, action) => {
             const id = action.payload
-            state.basket.map((item) => {
-                if (item.id === id) {
-                    item.amount -= 1;
-                }
-            })
+           const itemIndex = state.basket.findIndex(item => item.id ===id);
+           if(itemIndex !== -1){
+            const item = state.basket[itemIndex];
+            if(item.amount>1){
+                item.amount -= 1;
+            }else{
+                state.basket.splice(itemIndex,1) // Remove when it is <=0
+            }
+           }
         }
 
 
