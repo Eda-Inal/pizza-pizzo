@@ -23,7 +23,7 @@ function Navbar() {
     <Spacer />
     <ButtonGroup>
       <Button colorScheme="gray.900"  >
-        <Link href='/home'><Text _hover={{color:"red.400"}}  fontSize='xl'>Home</Text></Link>
+        <Link href='/'><Text _hover={{color:"red.400"}}  fontSize='xl'>Home</Text></Link>
       </Button>
  
 <Hide below='md'>
