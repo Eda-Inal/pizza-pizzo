@@ -3,13 +3,20 @@ import React from 'react'
 import { Card, CardHeader,Flex, CardBody,Input, Box,CardFooter,Text, Stack,Heading,Button, Container,Grid} from '@chakra-ui/react'
 import Image from 'next/image'
 import  img from "../../../public/4.jpg"
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { increaseAmount,decreaseAmount } from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
 function Basket() {
   const pizzadata = useSelector((state) => state.pizza.basket);
-
+  const dispatch =  useDispatch();
+const handleAmountPlus = (id) => {
+dispatch(increaseAmount(id))
+}
+const handleAmountMinus = (id) => {
+  dispatch(decreaseAmount(id))
+  }
 
   return (
     <>
@@ -28,7 +35,7 @@ function Basket() {
       width ={150}
       height ={150}
       
-      src={img}
+      src={item.image.src}
       alt='Caffe Latte'
     />
   
@@ -45,10 +52,10 @@ function Basket() {
       <CardFooter>
         <Box>
         <Flex>
-        <Button colorScheme="black"><Text fontSize="3xl" > <FiMinusCircle/></Text></Button>
+        <Button colorScheme="black"><Text fontSize="3xl" onClick={()=> handleAmountMinus(item.id)}> <FiMinusCircle/></Text></Button>
            
-            <Input></Input>
-            <Button colorScheme="black"><Text fontSize="3xl" ><GoPlusCircle /></Text></Button>
+            <Input value={item.amount}></Input>
+            <Button colorScheme="black" onClick={()=> handleAmountPlus(item.id)}><Text fontSize="3xl" ><GoPlusCircle /></Text></Button>
 
 </Flex>
         </Box>
