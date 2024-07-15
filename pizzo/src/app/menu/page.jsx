@@ -1,10 +1,16 @@
+'use client'
 import React from 'react'
-
-
 import { Card, CardHeader,Grid,Box, CardBody, CardFooter,Stack,Heading,Text ,Button, Flex,Spacer} from '@chakra-ui/react'
 import Image from 'next/image'
 import pizzas from "../pizzas.json";
+import { useDispatch } from 'react-redux';
+import { addBasket } from '../redux/pizzasSlice';
 function Menu() {
+  const dispatch = useDispatch();
+
+  const handleBasket =(item)=>{
+    dispatch(addBasket(item))
+  }
  
   return (
     <div >
@@ -19,8 +25,6 @@ function Menu() {
  color="white"
 >
  <Image
-   objectFit='cover'
- maxW={{ base: '200px', sm: '200px' }}
 width = {150}
 height = {150}
    src={item.image.src}
@@ -42,7 +46,13 @@ height = {150}
       <Box mr={8}><Text fontSize="2xl">{item.price}</Text>
         </Box>
     
-       <Button variant='solid' px={7}  colorScheme='red'>
+       <Button 
+       variant='solid'
+        px={7} 
+        colorScheme='red'
+        onClick={() => handleBasket(item)}
+        
+        >
         <Text fontSize="xl">  Add</Text>
     
      </Button>
