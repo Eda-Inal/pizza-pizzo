@@ -8,6 +8,7 @@ export const pizzasSlice = createSlice({
 
         ],
         total:0,
+        totalprice:0
     },
     reducers: {
         addBasket: (state, action) => {
@@ -16,10 +17,13 @@ export const pizzasSlice = createSlice({
             if (existingPizza) {
                 existingPizza.amount += 1;
                 state.total =0
+                state.totalprice += pizzadata.price
              
             } else {
                 state.basket.push({ ...pizzadata, amount: 1 });
                 state.total =0
+                state.totalprice += pizzadata.price
+            
               
 
             }
@@ -30,6 +34,7 @@ export const pizzasSlice = createSlice({
                 if (item.id === id) {
                     item.amount += 1;
                     state.total+=1
+                    state.totalprice += item.price
                 }
             })
         },
@@ -41,9 +46,11 @@ export const pizzasSlice = createSlice({
             if(item.amount>1){
                 item.amount -= 1;
                 state.total-=1
+                state.totalprice -= item.price
             }else{
                 state.basket.splice(itemIndex,1) // Remove when it is <=0
                 state.total-=1
+                state.totalprice -= item.price
             }
            }
         },

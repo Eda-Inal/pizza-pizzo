@@ -11,6 +11,7 @@ function Menu() {
   const handleBasket =(item)=>{
     dispatch(addBasket(item));
     dispatch(calculateTotal())
+    
   }
  
   return (
@@ -44,7 +45,7 @@ height = {150}
 
    <CardFooter>
     <Flex>
-      <Box mr={8}><Text fontSize="2xl">{item.price}</Text>
+      <Box mr={8}><Text fontSize="2xl">{item.price}$</Text>
         </Box>
     
        <Button 
