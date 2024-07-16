@@ -2,6 +2,7 @@
 import React from 'react'
 import { Card, CardHeader,Flex, CardBody,Input, Box,CardFooter,Text, Stack,Heading,Button, Container,Grid} from '@chakra-ui/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import  img from "../../../public/4.jpg"
 import { useSelector,useDispatch } from 'react-redux'
 import { increaseAmount,decreaseAmount } from '../redux/pizzasSlice'
@@ -67,9 +68,15 @@ const handleAmountMinus = (id) => {
   
    ))}
 
-<Button mt={6} width={100} colorScheme="green" p={3}>
+ {pizzadata.length >=1 && (<Button mt={6} width={100} colorScheme="green" p={3}>
     <Text fontSize="xl">Order</Text>
- </Button>
+ </Button>)} 
+ {pizzadata.length <1 && (<>
+  <Text fontSize="2xl">There is no pizza in here. Let's check the menu</Text>
+ <Button mt={6} width={100} colorScheme="red" p={3}>
+    <Text fontSize="xl"><Link href='/menu'>Menu</Link></Text>
+ </Button></>
+ )} 
  
   </Grid> 
 
