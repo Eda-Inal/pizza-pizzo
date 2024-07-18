@@ -24,7 +24,10 @@ function Navbar() {
       />
      
     </Box>
+   
+    <Hide below='sm'>
     <Spacer />
+</Hide>
     <ButtonGroup>
       <Button colorScheme="gray.900"  >
         <Link href='/'><Text _hover={{color:"red.400"}}  fontSize='xl'>Home</Text></Link>
@@ -33,7 +36,8 @@ function Navbar() {
 <Hide below='md'>
 <Button colorScheme="gray.900" > <Link href='/menu'><Text _hover={{color:"red.400"}}  fontSize='xl'>Menu</Text></Link></Button>
 </Hide>
-    {
+<Hide below='sm'>
+{
       btn && (
         <Button colorScheme="green" > <Link href="/profile" ><Text fontSize='xl'>Profile</Text></Link></Button>
       )
@@ -43,6 +47,8 @@ function Navbar() {
         <Button colorScheme="red" > <Link href="/login" ><Text fontSize='xl'>Log in</Text></Link></Button>
       )
     }
+</Hide>
+   
 
       <Button colorScheme="red" _hover={{}} marginRight={{ base: 0, md: 1, lg: 2 }} position="relative">
           <Tooltip label="View Basket" fontSize="md">

@@ -35,7 +35,7 @@ const handleForm = () => {
     
     <Container mt={10} centerContent>
       {password}
-    <Box bg="gray.100"  color="black" maxWidth={500} maxHeight={500} p={15} px={[3,6,12,16]} borderRadius={10}>
+    <Box bg="gray.100"  color="black" maxWidth={600} maxHeight={600} p={15}  borderRadius={10}>
       <Center>
       <FormControl  width={300} isRequired mt={10}>
   <FormLabel >Name,Surname</FormLabel>
