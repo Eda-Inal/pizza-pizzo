@@ -26,15 +26,15 @@ dispatch(directAdress(false));
   }
 
   return (
-    <Container mt={10} centerContent>
+    <Container mt={10} maxW={500}  centerContent>
      
-    <Box bg="gray.200"  color="black" maxWidth={500} maxHeight={500} p={15} px={[3,6,12,16]} borderRadius={10}>
+    <Box bg="gray.200"  color="black"  p={15} mx={15} px={[3,6,12,16]} borderRadius={10}>
     
     <Text fontSize="xl">
         Name : { namePassword.name || namePassword12.name}
     </Text>
     <Text mt={3} mb={1} fontSize="xl">Address:</Text>
-    <Textarea width={400} pl={5} height={100} fontSize="xl"border={1} 
+    <Textarea width={250} pl={5} height={100} fontSize="xl"border={1} 
   onChange={handleChange}
 
       borderColor="black" borderStyle="solid" >
@@ -44,7 +44,7 @@ dispatch(directAdress(false));
      {
     showBtn &&
       (
-     <Button mt={2} 
+     <Button mt={4} 
     bg="green.400"
       px={6} 
       onClick = {handleClick}
