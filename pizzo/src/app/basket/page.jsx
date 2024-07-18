@@ -123,7 +123,7 @@ Total</Text>
  {
   (!showBtn && !adresSituation)  &&(
     <Button mt={6} width={100} colorScheme="green" p={3}>
-    <Text fontSize="xl" onClick = {handleClick}>Order</Text>
+    <Text fontSize="xl" onClick = {handleClick}><Link href ="/order">Order</Link></Text>
  </Button>
   )
  }
