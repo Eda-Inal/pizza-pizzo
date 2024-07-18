@@ -19,6 +19,7 @@ function Basket() {
   const profile = useSelector((state) => state.pizza.profile)
   const showBtn = useSelector((state) => state.pizza.btnBasket);
   const adresSituation = useSelector((state) => state.pizza.adresSituation);
+  const router = useRouter();
 
 
 const handleAmountPlus = (id) => {
@@ -28,19 +29,16 @@ const handleAmountMinus = (id) => {
   dispatch(decreaseAmount(id))
   }
   const handleClick = () => {
-    if (login.name === "" && signup.name === "") {
-      dispatch(btnShow(true));
-    } else {
-      dispatch(btnShow(false));
-    }
-  
-    if (profile.adres === "") {
-      dispatch(directAdress(true));
-    } else {
-      dispatch(directAdress(false));
+    let showLoginButton = login.name === "" && signup.name === "";
+    let showAddressButton = profile.adres === "";
+
+    dispatch(btnShow(showLoginButton));
+    dispatch(directAdress(showAddressButton));
+
+    if (!showLoginButton && !showAddressButton) {
+      router.push('/order');
     }
   }
-  
  
 
   return (
@@ -122,9 +120,9 @@ Total</Text>
  </Box>
  {
   (!showBtn && !adresSituation)  &&(
-    <Button mt={6} width={100} colorScheme="green" p={3}>
-    <Text fontSize="xl" onClick = {handleClick}><Link href ="/order">Order</Link></Text>
- </Button>
+    <Button mt={6} width={100} colorScheme="green" p={3} onClick={handleClick}>
+                <Text fontSize="xl">Order</Text>
+              </Button>
   )
  }
 
