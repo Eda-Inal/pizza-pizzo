@@ -12,16 +12,16 @@ function Order() {
     const [close,setClose] = useState(false)
  
     const handleName=(e) => {
-        setInfo({ name: e.target.value });
+        setInfo({ ...info, name: e.target.value });
       }
       const handleDate=(e) => {
-        setInfo({ date: e.target.value });
+        setInfo({ ...info, date: e.target.value });
       }
       const handleCvv=(e) => {
-        setInfo({ cvv: e.target.value });
+        setInfo({ ...info, cvv: e.target.value });
       }
       const handleNumber=(e) => {
-        setInfo({ number: e.target.value });
+        setInfo({ ...info, number: e.target.value });
       }
       const handleClose = () => {
         setClose(true)
