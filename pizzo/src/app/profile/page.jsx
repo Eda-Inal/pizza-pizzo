@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, Textarea } from '@chakra-ui/react'
+import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, Textarea,AdresBtn } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { editProfile,directAdress } from '../redux/pizzasSlice'
@@ -13,6 +13,7 @@ function Profile() {
   const profile = useSelector((state) => state.pizza.profile);
     const pizzadata = useSelector((state) => state.pizza.basket);
   const completedOrder = useSelector((state) => state.pizza.completedOrder);
+  const adresBtn = useSelector((state) => state.pizza.adresBtn)
   const [showBtn,setShowBtn] = useState(false)
   const [textArea,setTextArea] =  useState("sd");
   const handleChange = (e) => {
@@ -23,6 +24,7 @@ function Profile() {
 dispatch(editProfile(textArea));
 setShowBtn(false)
 dispatch(directAdress(false));
+
   }
 
   return (
@@ -52,6 +54,8 @@ dispatch(directAdress(false));
      ><Text fontSize='xl' color="white">Save</Text></Button>
       ) 
     }
+    
+     
     
     
     

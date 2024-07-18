@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createSlice } from '@reduxjs/toolkit';
 
 export const pizzasSlice = createSlice({
     name: 'pizza',
@@ -26,7 +25,8 @@ export const pizzasSlice = createSlice({
         },
         btnBasket: false,
         adresSituation : false,
-        completedOrder:false
+        completedOrder:false,
+        adresBtn:false
     },
     reducers: {
         addBasket: (state, action) => {
@@ -100,7 +100,7 @@ export const pizzasSlice = createSlice({
             state.btnBasket = answer
         },
         directAdress: (state, action) => {
-state.adresSituation = action.payload
+state.adresSituation = action.payload; 
         },
         isCompletedOrder : (state,action) => {
             state.completedOrder = action.payload

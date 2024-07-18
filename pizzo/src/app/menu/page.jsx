@@ -26,12 +26,15 @@ function Menu() {
  bg="black"
  color="white"
 >
- <Image
-width = {150}
-height = {150}
+  <Box mx={{base:"auto",sm:0}} width={{base:200,md:250,lg:300}}> 
+     <Image
+width = {200}
+height = {200}
    src={item.image.src}
    alt='Caffe Latte'
  />
+  </Box>
+
 
  <Stack>
    <CardBody>

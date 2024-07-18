@@ -6,7 +6,7 @@ import Link from 'next/link'
 import  img from "../../../public/4.jpg"
 import { useSelector,useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation' 
-import { increaseAmount,decreaseAmount,btnShow,directAdress,isCompletedOrder } from '../redux/pizzasSlice'
+import { increaseAmount,decreaseAmount,btnShow,directAdress,isCompletedOrder, } from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
@@ -42,6 +42,7 @@ const handleAmountMinus = (id) => {
     }
   }
  
+ 
 
   return (
     
@@ -57,22 +58,23 @@ const handleAmountMinus = (id) => {
     variant='outline'
     background="black"
     color="white"
-  >
-    <Image
-      width ={150}
-      height ={150}
-      
-      src={item.image.src}
-      alt='Caffe Latte'
-    />
+  ><Box mx={{base:"auto",sm:0}} >
+ <Image
+
+width ={150}
+height ={150}
+src={item.image.src}
+alt='Caffe Latte'
+/>
+  </Box>
+   
   
     <Stack>
       <CardBody>
         <Heading size='md'>{item.name}</Heading>
   
         <Text py='2'>
-          Caffè latte is a coffee beverage of Italian origin made with espresso
-          and steamed milk.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, quae.
         </Text>
       </CardBody>
   
@@ -142,7 +144,7 @@ Total</Text>
   (adresSituation &&  !showBtn) &&(
     <>
     <Text fontSize="xl">You don't have address, fill the adress</Text>
-    <Button colorScheme="red"width={150} mt={6}>  <Text fontSize="xl" >
+    <Button colorScheme="red"width={150} mt={6}  onClick={handleAddress}>  <Text fontSize="xl" >
       <Link href="/profile" >Fill the address</Link>
      </Text></Button>
     </>
