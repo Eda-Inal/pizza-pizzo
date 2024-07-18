@@ -6,7 +6,7 @@ import Link from 'next/link'
 import  img from "../../../public/4.jpg"
 import { useSelector,useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation' 
-import { increaseAmount,decreaseAmount,btnShow,directAdress } from '../redux/pizzasSlice'
+import { increaseAmount,decreaseAmount,btnShow,directAdress,isCompletedOrder } from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
@@ -38,6 +38,7 @@ const handleAmountMinus = (id) => {
 
     if (!showLoginButton && !showAddressButton) {
       router.push('/order');
+      dispatch(isCompletedOrder(true));
     }
   }
  
