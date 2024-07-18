@@ -5,20 +5,43 @@ import Image from 'next/image'
 import Link from 'next/link'
 import  img from "../../../public/4.jpg"
 import { useSelector,useDispatch } from 'react-redux'
-import { increaseAmount,decreaseAmount } from '../redux/pizzasSlice'
+import { increaseAmount,decreaseAmount,btnShow,directAdress } from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
+import { useState } from 'react'
 function Basket() {
+  const dispatch =  useDispatch();
   const pizzadata = useSelector((state) => state.pizza.basket);
   const totalprice = useSelector((state) => state.pizza.totalprice);
-  const dispatch =  useDispatch();
+  const login = useSelector((state) => state.pizza.login);
+  const signup = useSelector((state) => state.pizza.signup);
+  const profile = useSelector((state) => state.pizza.profile)
+  const showBtn = useSelector((state) => state.pizza.btnBasket);
+  const adresSituation = useSelector((state) => state.pizza.adresSituation);
+
+
 const handleAmountPlus = (id) => {
 dispatch(increaseAmount(id))
 }
 const handleAmountMinus = (id) => {
   dispatch(decreaseAmount(id))
   }
+  const handleClick = () => {
+    if (login.name === "" && signup.name === "") {
+      dispatch(btnShow(true));
+    } else {
+      dispatch(btnShow(false));
+    }
+  
+    if (profile.adres === "") {
+      dispatch(directAdress(true));
+    } else {
+      dispatch(directAdress(false));
+    }
+  }
+  
+ 
 
   return (
     
@@ -97,10 +120,34 @@ Total</Text>
 </Flex>
 
  </Box>
- 
- <Button mt={6} width={100} colorScheme="green" p={3}>
-    <Text fontSize="xl">Order</Text>
+ {
+  (!showBtn && !adresSituation)  &&(
+    <Button mt={6} width={100} colorScheme="green" p={3}>
+    <Text fontSize="xl" onClick = {handleClick}>Order</Text>
  </Button>
+  )
+ }
+
+ {
+  showBtn && (
+    <>
+    <Text fontSize="xl">You don't have address, first log in.</Text>
+    <Button colorScheme="red"width={100} mt={6}>  <Text fontSize="xl" >
+      <Link href="/login" > Log in</Link>
+     </Text></Button>
+    </>
+  )
+ }
+ {
+  (adresSituation &&  !showBtn) &&(
+    <>
+    <Text fontSize="xl">You don't have address, fill the adress</Text>
+    <Button colorScheme="red"width={150} mt={6}>  <Text fontSize="xl" >
+      <Link href="/profile" >Fill the address</Link>
+     </Text></Button>
+    </>
+  )
+ }
  </>
 )} 
  {pizzadata.length <1 && (<>

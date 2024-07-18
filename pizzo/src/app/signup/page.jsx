@@ -3,7 +3,7 @@ import React from 'react'
 import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, Stack,Alert,AlertIcon } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux';
-import { updateSignup,changeBtn } from '../redux/pizzasSlice';
+import { updateSignup,changeBtn,btnShow } from '../redux/pizzasSlice';
 import { useState } from 'react'
 
 function Signup() {
@@ -28,6 +28,7 @@ const handleForm = () => {
   if(password ===  password2 && name !=="" && password!=="" && password2 !=="" ){
     dispatch(updateSignup({name:name,password:password,password2:password2}));
     dispatch(changeBtn());
+    dispatch(btnShow(false))
   {password === password2? setEqualAlert(false) : ""}
   {name !=="" && password!=="" && password2 !=="" ? setEmptyAlert(false) : ""}
   }

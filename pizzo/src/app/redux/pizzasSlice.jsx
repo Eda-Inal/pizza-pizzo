@@ -7,23 +7,25 @@ export const pizzasSlice = createSlice({
         basket: [
 
         ],
-        total:0,
-        totalprice:0,
-        login:[{
-            name:"",
-            password:""
-        }],
-        signup:[{
-            name:"",
-            password:"",
-            password2:""
-        }],
-       
-        btn:false,
-        profile:{
-                adres:"",
-                orders:""
-            },
+        total: 0,
+        totalprice: 0,
+        login: {
+            name: "",
+            password: ""
+        },
+        signup: {
+            name: "",
+            password: "",
+            password2: ""
+        },
+
+        btn: false,
+        profile: {
+            adres: "",
+            orders: ""
+        },
+        btnBasket: false,
+        adresSituation : false
     },
     reducers: {
         addBasket: (state, action) => {
@@ -31,15 +33,15 @@ export const pizzasSlice = createSlice({
             const existingPizza = state.basket.find((pizza) => pizza.id === pizzadata.id);
             if (existingPizza) {
                 existingPizza.amount += 1;
-                state.total =0
+                state.total = 0
                 state.totalprice += pizzadata.price
-             
+
             } else {
                 state.basket.push({ ...pizzadata, amount: 1 });
-                state.total =0
+                state.total = 0
                 state.totalprice += pizzadata.price
-            
-              
+
+
 
             }
         },
@@ -48,53 +50,61 @@ export const pizzasSlice = createSlice({
             state.basket.map((item) => {
                 if (item.id === id) {
                     item.amount += 1;
-                    state.total+=1
+                    state.total += 1
                     state.totalprice += item.price
                 }
             })
         },
         decreaseAmount: (state, action) => {
             const id = action.payload
-           const itemIndex = state.basket.findIndex(item => item.id ===id);
-           if(itemIndex !== -1){
-            const item = state.basket[itemIndex];
-            if(item.amount>1){
-                item.amount -= 1;
-                state.total-=1
-                state.totalprice -= item.price
-            }else{
-                state.basket.splice(itemIndex,1) // Remove when it is <=0
-                state.total-=1
-                state.totalprice -= item.price
+            const itemIndex = state.basket.findIndex(item => item.id === id);
+            if (itemIndex !== -1) {
+                const item = state.basket[itemIndex];
+                if (item.amount > 1) {
+                    item.amount -= 1;
+                    state.total -= 1
+                    state.totalprice -= item.price
+                } else {
+                    state.basket.splice(itemIndex, 1) // Remove when it is <=0
+                    state.total -= 1
+                    state.totalprice -= item.price
+                }
             }
-           }
         },
-        calculateTotal : (state)=> {
+        calculateTotal: (state) => {
             state.basket.map((item) => {
-              if(item.amount >0){
-                state.total +=item.amount
+                if (item.amount > 0) {
+                    state.total += item.amount
 
-              }
+                }
             })
         },
-        updateLogin:(state,action) =>{
-const {name,password} = action.payload;
-state.login = { name, password };
+        updateLogin: (state, action) => {
+            const { name, password } = action.payload;
+            state.login = { name, password };
         },
-        updateSignup:(state,action) => {
-const {name,password,password2} = action.payload;
-state.signup = {name,password,password2}
+        updateSignup: (state, action) => {
+            const { name, password, password2 } = action.payload;
+            state.signup = { name, password, password2 }
         },
-        changeBtn : (state) => {
-state.btn = true;
+        changeBtn: (state) => {
+            state.btn = true;
         },
-        editProfile: (state,action)=> {
- state.profile.adres= action.payload;
+        editProfile: (state, action) => {
+            state.profile.adres = action.payload;
 
+        },
+        btnShow: (state, action) => {
+            const answer = action.payload
+            state.btnBasket = answer
+        },
+        directAdress: (state, action) => {
+state.adresSituation = action.payload
         }
-    
+
+
 
     }
 })
-export const { addBasket, increaseAmount,decreaseAmount,calculateTotal,updateLogin,updateSignup,changeBtn,editProfile } = pizzasSlice.actions;
+export const { addBasket, increaseAmount, decreaseAmount, calculateTotal, updateLogin, updateSignup, changeBtn, editProfile, btnShow, directAdress } = pizzasSlice.actions;
 export default pizzasSlice.reducer;

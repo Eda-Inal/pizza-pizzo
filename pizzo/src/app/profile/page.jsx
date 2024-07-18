@@ -3,7 +3,7 @@ import React from 'react'
 import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, Textarea } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { editProfile } from '../redux/pizzasSlice'
+import { editProfile,directAdress } from '../redux/pizzasSlice'
 function Profile() {
   const dispatch = useDispatch();
   const namePassword = useSelector((state) => state.pizza.login);
@@ -18,6 +18,7 @@ function Profile() {
   const handleClick = () => {
 dispatch(editProfile(textArea));
 setShowBtn(false)
+dispatch(directAdress(false));
   }
 
   return (

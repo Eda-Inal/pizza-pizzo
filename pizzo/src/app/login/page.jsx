@@ -2,14 +2,16 @@
 import React from 'react'
 import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, useLatestRef ,Stack,Alert,AlertIcon} from '@chakra-ui/react'
 import Link from 'next/link'
-import { updateLogin,changeBtn } from '../redux/pizzasSlice'
+import { updateLogin,changeBtn, btnShow } from '../redux/pizzasSlice'
 import { useSelector,useDispatch } from 'react-redux'
+
 import { useState } from 'react'
 function Login() {
   const dispatch = useDispatch();
   const [name,setName] = useState("");
   const [password,setPassword] = useState("");
   const[emptyAlert,setEmptyAlert]  =useState(false);
+
   const handleName=(e) => {
     setName(e.target.value)
   }
@@ -21,6 +23,7 @@ const handleForm = () => {
     dispatch(updateLogin({name:name,password:password}));
     dispatch(changeBtn());
     setEmptyAlert(false);
+    dispatch(btnShow(false))
   }
   else{
     setEmptyAlert(true)
