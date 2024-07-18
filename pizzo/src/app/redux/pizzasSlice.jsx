@@ -17,7 +17,9 @@ export const pizzasSlice = createSlice({
             name:"",
             password:"",
             password2:""
-        }]
+        }],
+        profile:"",
+        btn:false
     },
     reducers: {
         addBasket: (state, action) => {
@@ -78,12 +80,12 @@ state.login = { name, password };
         updateSignup:(state,action) => {
 const {name,password,password2} = action.payload;
 state.signup = {name,password,password2}
+        },
+        changeBtn : (state) => {
+state.btn = true;
         }
-        
-
-
 
     }
 })
-export const { addBasket, increaseAmount,decreaseAmount,calculateTotal,updateLogin,updateSignup } = pizzasSlice.actions;
+export const { addBasket, increaseAmount,decreaseAmount,calculateTotal,updateLogin,updateSignup,changeBtn } = pizzasSlice.actions;
 export default pizzasSlice.reducer;

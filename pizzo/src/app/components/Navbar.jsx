@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
-import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Show,Hide, Tooltip} from '@chakra-ui/react'
+import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Show,Hide, Tooltip, useLatestRef} from '@chakra-ui/react'
 import { BsBasket } from "react-icons/bs";
 import { Text } from '@chakra-ui/react'
 import Home from '../page';
@@ -12,7 +12,8 @@ import { useSelector } from 'react-redux';
 
 
 function Navbar() {
-  const total = useSelector((state) => state.pizza.total)
+  const total = useSelector((state) => state.pizza.total);
+  const btn = useSelector((state) => state.pizza.btn);
   return (
     <Flex minWidth='max-content' p={2} alignItems='center' bg="gray.900" color="white"   gap='2'>
     <Box p='2'>
@@ -32,8 +33,17 @@ function Navbar() {
 <Hide below='md'>
 <Button colorScheme="gray.900" > <Link href='/menu'><Text _hover={{color:"red.400"}}  fontSize='xl'>Menu</Text></Link></Button>
 </Hide>
-    
-      <Button colorScheme="red" > <Link href="/login" ><Text fontSize='xl'>Log in</Text></Link></Button>
+    {
+      btn && (
+        <Button colorScheme="green" > <Link href="/profile" ><Text fontSize='xl'>Profile</Text></Link></Button>
+      )
+    }
+    {
+      !btn && (
+        <Button colorScheme="red" > <Link href="/login" ><Text fontSize='xl'>Log in</Text></Link></Button>
+      )
+    }
+
       <Button colorScheme="red" _hover={{}} marginRight={{ base: 0, md: 1, lg: 2 }} position="relative">
           <Tooltip label="go to basket" fontSize="md">
             <Link href="/basket">
