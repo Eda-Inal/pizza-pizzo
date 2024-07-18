@@ -7,6 +7,7 @@ import Image from 'next/image'
 import styles from "./styles.module.css"
 import { SiCodechef } from "react-icons/si";
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 
 function Home() {
@@ -50,12 +51,14 @@ function Home() {
          
         <Button mr={2} py={8}  colorScheme="red" border={1} borderStyle="solid" borderColor="white" >
         <Flex>
-        <Text fontSize='xl' mr={2}>Order now </Text>
+        <Text fontSize='xl' mr={2}><Link href ="/basket">Order now</Link></Text>
         <Text fontSize='xl'>   <BsBasket  /></Text>
      
             </Flex>
             </Button> 
-        <Button  py={8} colorScheme="red"  border={1} borderStyle="solid" borderColor="white"><Text fontSize='xl'>View menu</Text></Button> 
+        <Button  py={8} colorScheme="red"  border={1} borderStyle="solid" borderColor="white"><Text fontSize='xl'><Link href ="/menu">View menu</Link>
+          
+          </Text></Button> 
         </Flex>
      
       </Center>
