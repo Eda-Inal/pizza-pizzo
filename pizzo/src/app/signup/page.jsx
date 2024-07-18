@@ -11,8 +11,12 @@ function Signup() {
   const [name,setName] = useState("");
   const [password,setPassword] = useState("");
   const [password2,setPassword2] = useState("");
+  const [equalAlert,setEqualAlert] = useState(false);
+  const[emptyAlert,setEmptyAlert]  =useState(false);
+
   const handleName=(e) => {
     setName(e.target.value)
+ 
   }
   const handlePassword=(e) => {
     setPassword(e.target.value)
@@ -21,8 +25,19 @@ function Signup() {
     setPassword2(e.target.value)
   }
 const handleForm = () => {
-  if(password === password2){
-    dispatch(updateSignup({name:name,password:password,password2:password2}))
+  if(password ===  password2 && name !=="" && password!=="" && password2 !=="" ){
+    dispatch(updateSignup({name:name,password:password,password2:password2}));
+  {password === password2? setEqualAlert(false) : ""}
+  {name !=="" && password!=="" && password2 !=="" ? setEmptyAlert(false) : ""}
+  }
+  else if( password!=="" && password2 !=="" &&password !== password2){
+    setEqualAlert(true)
+    setEmptyAlert(false);
+  }
+  else if(name ==="" || password==="" || password2 ===""){
+    setEmptyAlert(true);
+    setEqualAlert(false);
+    
   }
 
 }
@@ -36,32 +51,45 @@ const handleForm = () => {
       <Center>
       <FormControl  width={300} isRequired mt={10}>
   <FormLabel >Name,Surname</FormLabel>
-  <Input border={1} onChange = {handleName}
+  <Input border={1} onChange = {handleName} 
 
-      borderColor="black" borderStyle="solid" placeholder='First name' />
+      borderColor="black"
+      
+        
+       borderStyle="solid"
+       placeholder='First name' />
 
 <FormLabel mt={3}>Password</FormLabel>
-  <Input border={1}  onChange = {handlePassword}
-      borderColor="black" borderStyle="solid" type = "password" placeholder='Password' />
+  <Input border={1}  onChange = {handlePassword} 
+      borderColor="black" borderStyle="solid" type = "password"  placeholder='Password' />
 <FormLabel mt={3}>Password</FormLabel>
-  <Input border={1}  onChange = {handlePassword2}
-      borderColor="black" borderStyle="solid" type = "password" placeholder='Password again' />
+  <Input border={1}  onChange = {handlePassword2} 
+      borderColor="black" borderStyle="solid" type = "password"  placeholder='Password again' />
       
   </FormControl>
 
       </Center>
-      {password !== password2 ?
+      {equalAlert  &&
        ( <Stack spacing={3} mt={3} border={1}  
       borderColor="red.100" borderStyle="solid">
   <Alert status='error'>
     <AlertIcon />
-    Password does not match.
+    Password does not match. 
   </Alert>
   </Stack>)
-   : ""}
+   }
+    {emptyAlert &&
+       ( <Stack spacing={3} mt={3} border={1}  
+      borderColor="red.100" borderStyle="solid">
+  <Alert status='warning'>
+    <AlertIcon />
+    Please fill all fields.
+  </Alert>
+  </Stack>)
+   }
      
       <Center>
-      <Button mt={6} colorScheme='green'> <Link href={`${password === password2 ? "/profile" : ""}`} onClick={handleForm}>Sign Up </Link ></Button>
+      <Button mt={6} colorScheme='green'> <Link href={`${password === password2 && name !=="" && password!=="" && password2 !=="" ? "/profile" : ""}`} onClick={handleForm}>Sign Up </Link ></Button>
       </Center>
      
     </Box>
