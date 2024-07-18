@@ -15,7 +15,7 @@ function Navbar() {
   const total = useSelector((state) => state.pizza.total);
   const btn = useSelector((state) => state.pizza.btn);
   return (
-    <Flex minWidth='max-content' p={2} alignItems='center' bg="gray.900" color="white"   gap='2'>
+    <Flex minWidth='max-content' p={2} alignItems='center' bg="gray.900" color="white"   >
     <Box p='2'>
       <Image
       src= {logo1}
@@ -45,7 +45,7 @@ function Navbar() {
     }
 
       <Button colorScheme="red" _hover={{}} marginRight={{ base: 0, md: 1, lg: 2 }} position="relative">
-          <Tooltip label="go to basket" fontSize="md">
+          <Tooltip label="View Basket" fontSize="md">
             <Link href="/basket">
               <BsBasket />
               <Box position="absolute" top="-1" right="-1" backgroundColor="red.500" borderRadius="full" width="20px" height="20px" display="flex" alignItems="center" justifyContent="center">
