@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import  img from "../../../public/4.jpg"
 import { useSelector,useDispatch } from 'react-redux'
+import { useRouter } from 'next/navigation' 
 import { increaseAmount,decreaseAmount,btnShow,directAdress } from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
