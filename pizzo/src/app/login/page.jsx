@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, useLatestRef } from '@chakra-ui/react'
+import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, useLatestRef ,Stack,Alert,AlertIcon} from '@chakra-ui/react'
 import Link from 'next/link'
 import { updateLogin } from '../redux/pizzasSlice'
 import { useSelector,useDispatch } from 'react-redux'
@@ -9,6 +9,7 @@ function Login() {
   const dispatch = useDispatch();
   const [name,setName] = useState("");
   const [password,setPassword] = useState("");
+  const[emptyAlert,setEmptyAlert]  =useState(false);
   const handleName=(e) => {
     setName(e.target.value)
   }
@@ -16,7 +17,14 @@ function Login() {
     setPassword(e.target.value)
   }
 const handleForm = () => {
-dispatch(updateLogin({name:name,password:password}))
+  if(name !=="" && password !== ""){
+    dispatch(updateLogin({name:name,password:password}));
+    setEmptyAlert(false);
+  }
+  else{
+    setEmptyAlert(true)
+  }
+
 }
 
   return (
@@ -41,16 +49,27 @@ dispatch(updateLogin({name:name,password:password}))
       type = "password"
        placeholder='Password'
        onChange = {handlePassword}
+       mb = {3}
         />
 
  
    
   </FormControl>
       </Center>
+      {emptyAlert &&
+       ( <Stack spacing={3} mb={3} border={1}  
+      borderColor="red.100" borderStyle="solid">
+  <Alert status='warning'>
+    <AlertIcon />
+    Please fill all fields.
+  </Alert>
+  </Stack>)
+   }
       <Center>
+    
       
-      <Button mt={6} colorScheme='red' onClick={handleForm}>  
-        <Link href="/profile">Log in </Link >
+      <Button  colorScheme='red' onClick={handleForm}>  
+        <Link href={`${ name !=="" && password!==""  ? "/profile" : ""}`}>Log in </Link >
       </Button>
     
       </Center>
