@@ -16,14 +16,17 @@ function Home() {
     <div>
  
  <Grid mt={10} templateColumns={{base :'repeat(1, 1fr)',lg :'repeat(2, 1fr)'}} gap={16} marginX={5}>
- <Box  width='100%'   >
- 
-     <Image 
+  
+ <Box  width='100%'  >
+ <Center>
+ <Image 
         alt="pizza"
         src={bg}   
         style ={{borderRadius :"10%"}}
         
-      />  
+      />
+ </Center>
+      
  
       
        
@@ -49,9 +52,9 @@ function Home() {
       <Center>
         <Flex>
          
-        <Button mr={2} py={8}  colorScheme="red" border={1} borderStyle="solid" borderColor="white" >
+        <Button mr={3} py={8}  colorScheme="red" border={1} borderStyle="solid" borderColor="white" > 
         <Flex>
-        <Text fontSize='xl' mr={2}><Link href ="/basket">Order now</Link></Text>
+        <Text fontSize='xl'   mr={2}><Link href ="/basket">Order now</Link></Text>
         <Text fontSize='xl'>   <BsBasket  /></Text>
      
             </Flex>
