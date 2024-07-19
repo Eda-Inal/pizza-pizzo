@@ -1,15 +1,23 @@
 'use client'
 import React from 'react'
-import { Card, CardHeader, Grid, Box, CardBody, CardFooter, Stack, Heading, Text, Button, Flex, Spacer } from '@chakra-ui/react'
+import { Card, CardHeader, Grid, Box, CardBody, CardFooter, Stack, Heading, Text, Button, Flex, Spacer,useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import pizzas from "../pizzas.json";
 import { useDispatch } from 'react-redux';
 import { addBasket, calculateTotal } from '../redux/pizzasSlice';
 function Menu() {
+  const toast = useToast();
   const dispatch = useDispatch();
   const handleBasket = (item) => {
     dispatch(addBasket(item));
     dispatch(calculateTotal())
+    toast({
+      title: `${item.name} sepete eklendi.`,
+      status: 'success',
+      duration: 2000,
+      isClosable: true,
+      position: 'top-right',
+    });
   }
   return (
     <div >
