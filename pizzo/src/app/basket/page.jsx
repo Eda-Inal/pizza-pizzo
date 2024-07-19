@@ -23,17 +23,18 @@ function Basket() {
   const showAdresBtn = useSelector((state) => state.pizza.showAdresBtn);
 
   useEffect(() => {
-    if (!login.name) {
+    if (!login.name && !signup.name) {
       dispatch(setShowLoginBtn(true));
       dispatch(setShowAdresBtn(false));
-    } else if (login.name && !profile.adres) {
+    } else if ((login.name || signup.name) && !profile.adres) {
       dispatch(setShowLoginBtn(false));
       dispatch(setShowAdresBtn(true));
-    } else if (login.name && profile.adres) {
+    } else if ((login.name || signup.name) && profile.adres) {
       dispatch(setShowLoginBtn(false));
       dispatch(setShowAdresBtn(false));
     }
-  }, [login.name, profile.adres, dispatch]);
+  }, [login.name, signup.name, profile.adres, dispatch]);
+  
 
   const handleAmountPlus = (id) => {
     dispatch(increaseAmount(id))

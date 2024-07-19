@@ -45,7 +45,7 @@ function Signup() {
     if (password === password2 && name !== "" && password !== "" && password2 !== "") {
       dispatch(updateSignup({ name: name, password: password, password2: password2 }));
       dispatch(changeBtn());
-      dispatch(btnShow(false))
+   
       { password === password2 ? setEqualAlert(false) : "" }
       { name !== "" && password !== "" && password2 !== "" ? setEmptyAlert(false) : "" }
     }
@@ -58,19 +58,20 @@ function Signup() {
       setEqualAlert(false);
     }
   }
+
   return (
     <Container mt={10} centerContent>
       <Box bg="gray.100" color="black" maxWidth={500} maxHeight={500} p={15} px={[3, 6, 8, 12]} borderRadius={10}>
         <Center>
-          <FormControl  isRequired mt={10}>
-            <FormLabel >Name,Surname</FormLabel>
+          <FormControl isRequired mt={10}>
+            <FormLabel>Name,Surname</FormLabel>
             <Input border={1} onChange={handleName}
               borderColor="black"
               borderStyle="solid"
               placeholder='First name' />
             {nameError && (
               <Center>
-                <Text color="red" >
+                <Text color="red">
                   {nameError}
                 </Text>
               </Center>
@@ -109,9 +110,10 @@ function Signup() {
           </Stack>)
         }
         <Center>
-          <Button mt={6} colorScheme='green'> <Link href={`${password === password2 && name !== "" && password !== "" && password2 !== "" && !nameError && !error ? "/profile" : ""}`} onClick={handleForm}>Sign Up </Link ></Button>
+          <Button mt={6} colorScheme='green'>
+            <Link href={`${password === password2 && name !== "" && password !== "" && password2 !== "" && !nameError && !error ? "/profile" : ""}`} onClick={handleForm}>Sign Up </Link>
+          </Button>
         </Center>
-
       </Box>
     </Container>
   )

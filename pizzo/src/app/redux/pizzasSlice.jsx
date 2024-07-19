@@ -107,13 +107,6 @@ export const pizzasSlice = createSlice({
             state.profile.adres = action.payload;
         }
 
-        
-      
-       
-
-
-
-
     }
 })
 export const { addBasket, increaseAmount, decreaseAmount, calculateTotal, updateLogin, updateSignup, changeBtn, setShowLoginBtn, setShowAdresBtn, updateAdres ,editProfile } = pizzasSlice.actions;
