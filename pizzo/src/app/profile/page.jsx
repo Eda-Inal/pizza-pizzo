@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, Textarea,AdresBtn } from '@chakra-ui/react'
+import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, Textarea, } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { editProfile,directAdress } from '../redux/pizzasSlice'
+import { editProfile } from '../redux/pizzasSlice'
 import { Divider } from '@chakra-ui/react'
 
 function Profile() {
@@ -12,8 +12,9 @@ function Profile() {
   const namePassword12 = useSelector((state) => state.pizza.signup);
   const profile = useSelector((state) => state.pizza.profile);
     const pizzadata = useSelector((state) => state.pizza.basket);
-  const completedOrder = useSelector((state) => state.pizza.completedOrder);
-  const adresBtn = useSelector((state) => state.pizza.adresBtn)
+  
+
+
   const [showBtn,setShowBtn] = useState(false)
   const [textArea,setTextArea] =  useState("sd");
   const handleChange = (e) => {
@@ -23,9 +24,10 @@ function Profile() {
   const handleClick = () => {
 dispatch(editProfile(textArea));
 setShowBtn(false)
-dispatch(directAdress(false));
+
 
   }
+
 
   return (
     <Container mt={10} maxW={500}  centerContent>
@@ -49,18 +51,19 @@ dispatch(directAdress(false));
      <Button mt={4} 
     bg="green.400"
       px={6} 
-      onClick = {handleClick}
+      onClick={handleClick}
      
      ><Text fontSize='xl' color="white">Save</Text></Button>
       ) 
     }
+    
     
      
     
     
     
    <Text mt={5} fontSize="xl">Orders: </Text>
-   {completedOrder && (
+  
           <Box mt={2} bgColor="green.400" borderRadius={10} pl={2}><Divider/>
             {pizzadata.length > 0 ? (
               
@@ -71,7 +74,7 @@ dispatch(directAdress(false));
               <Text fontSize="xl">No orders found.</Text>
             )}
           </Box>
-        )}
+        
 
 
  

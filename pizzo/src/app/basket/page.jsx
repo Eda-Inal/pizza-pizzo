@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
+import { useEffect } from 'react'
 import { Card, CardHeader, Flex, CardBody, Input, Box, CardFooter, Text, Stack, Heading, Button, Container, Grid, Divider, Center, Spacer } from '@chakra-ui/react'
 import { LiaSmileWinkSolid } from "react-icons/lia";
 import Image from 'next/image'
 import Link from 'next/link'
 import img from "../../../public/4.jpg"
 import { useSelector, useDispatch } from 'react-redux'
-import { useRouter } from 'next/navigation'
-import { increaseAmount, decreaseAmount, btnShow, directAdress, isCompletedOrder, } from '../redux/pizzasSlice'
+import { increaseAmount, decreaseAmount,setShowLoginBtn} from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
@@ -18,10 +18,10 @@ function Basket() {
   const totalprice = useSelector((state) => state.pizza.totalprice);
   const login = useSelector((state) => state.pizza.login);
   const signup = useSelector((state) => state.pizza.signup);
-  const profile = useSelector((state) => state.pizza.profile)
-  const showBtn = useSelector((state) => state.pizza.btnBasket);
-  const adresSituation = useSelector((state) => state.pizza.adresSituation);
-  const router = useRouter();
+  const profile = useSelector((state) => state.pizza.profile);
+  const showLoginBtn = useSelector((state) => state.pizza.showLoginBtn);
+
+
   const handleAmountPlus = (id) => {
     dispatch(increaseAmount(id))
   }
@@ -29,21 +29,23 @@ function Basket() {
     dispatch(decreaseAmount(id))
   }
   const handleClick = () => {
-    let showLoginButton = login.name === "" && signup.name === "";
-    let showAddressButton = profile.adres === "";
-
-    dispatch(btnShow(showLoginButton));
-    dispatch(directAdress(showAddressButton));
-
-    if (!showLoginButton && !showAddressButton) {
-      router.push('/order');
-      dispatch(isCompletedOrder(true));
-    }
+if(login.name ===""){
+  dispatch(setShowLoginBtn(true));
+}
+    
+  
+    
+  }  
+  const handleChange = () => {
+    dispatch(setShowLoginBtn(false))
   }
+  
+ 
   return (
     <>
       <Grid marginX={{ base: "1", sm: "2", md: "8", lg: "15", xl: "28" }} mb={12}>
         <Flex mb={3}>
+        
           <Text fontSize="2xl">Time to Indulge  </Text>
           <Text fontSize="4xl">  <LiaSmileWinkSolid /></Text>
         </Flex>
@@ -111,35 +113,36 @@ function Basket() {
               </Flex>
 
             </Box>
-            {
-              (!showBtn && !adresSituation) && (
-                <Button mt={6} width={100} colorScheme="green" p={3} onClick={handleClick}>
+            
+            {!showLoginBtn && (
+              <Button mt={6} width={100} colorScheme="green" p={3} onClick={handleClick}>
                   <Text fontSize="xl">Order</Text>
                 </Button>
-              )
+            )
+              
             }
+                
+              
+            
 
-            {
-              showBtn && (
-                <>
-                  <Text fontSize="xl">You don't have address, first log in.</Text>
-                  <Button colorScheme="red" width={100} mt={6}>  <Text fontSize="xl" >
-                    <Link href="/login" > Log in</Link>
-                  </Text></Button>
+          
+             
+                
+                {
+                  showLoginBtn && (
+                    <>
+                    <Text fontSize="xl">You don't have address, first log in.</Text>
+                    <Button colorScheme="red" width={100} mt={6}>  <Text fontSize="xl" onClick={handleChange} >
+                      <Link href="/login" > Log in</Link>
+                    </Text></Button>
+                    </>
+                  )
+                }
+                
+                
+              
                 </>
-              )
-            }
-            {
-              (adresSituation && !showBtn) && (
-                <>
-                  <Text fontSize="xl">You don't have address, fill the adress</Text>
-                  <Button colorScheme="red" width={150} mt={6} p={6}  >  <Text fontSize="xl" >
-                    <Link href="/profile" >Fill the address</Link>
-                  </Text></Button>
-                </>
-              )
-            }
-          </>
+          
         )}
         {pizzadata.length < 1 && (<>
           <Text fontSize="2xl">There is no pizza in here. Let's check the menu</Text>
