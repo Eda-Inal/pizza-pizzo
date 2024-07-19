@@ -144,7 +144,7 @@ Total</Text>
   (adresSituation &&  !showBtn) &&(
     <>
     <Text fontSize="xl">You don't have address, fill the adress</Text>
-    <Button colorScheme="red"width={150} mt={6}  onClick={handleAddress}>  <Text fontSize="xl" >
+    <Button colorScheme="red"width={150} mt={6}  >  <Text fontSize="xl" >
       <Link href="/profile" >Fill the address</Link>
      </Text></Button>
     </>

@@ -1,22 +1,40 @@
 'use client'
 import React from 'react'
-import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button, useLatestRef ,Stack,Alert,AlertIcon} from '@chakra-ui/react'
+import { Container, Text,Box,FormControl,FormLabel,Input, Center,Button,Stack,Alert,AlertIcon} from '@chakra-ui/react'
 import Link from 'next/link'
 import { updateLogin,changeBtn, btnShow } from '../redux/pizzasSlice'
-import { useSelector,useDispatch } from 'react-redux'
-
+import {useDispatch } from 'react-redux'
 import { useState } from 'react'
+
 function Login() {
   const dispatch = useDispatch();
   const [name,setName] = useState("");
   const [password,setPassword] = useState("");
   const[emptyAlert,setEmptyAlert]  =useState(false);
+  const [controlPassword, setControlPassword] = useState('');
+  const [controlName,setControlName] =  useState("");
+  const [nameError,setNameError] = useState("");
+  const [error, setError] = useState('');
 
   const handleName=(e) => {
     setName(e.target.value)
+    const value = e.target.value;
+    setControlName(value);
+    if (value.length < 5) {
+      setNameError('At least 5 characters');
+    } else {
+      setNameError('');
+    }
   }
   const handlePassword=(e) => {
-    setPassword(e.target.value)
+    setPassword(e.target.value);
+    const value = e.target.value;
+    setControlPassword(value);
+    if (value.length < 8) {
+      setError('At least 8 characters');
+    } else {
+      setError('');
+    }
   }
 const handleForm = () => {
   if(name !=="" && password !== ""){
@@ -30,6 +48,7 @@ const handleForm = () => {
   }
 
 }
+
 
   return (
     
@@ -46,6 +65,14 @@ const handleForm = () => {
         onChange = {handleName}
 
         />
+          { nameError && (
+            <Center>
+ <Text color="red"  mb={2}>
+          {nameError}
+        </Text>
+            </Center>
+       
+      )}
 
 <FormLabel mt={3}>Password</FormLabel>
   <Input border={1}
@@ -53,8 +80,17 @@ const handleForm = () => {
       type = "password"
        placeholder='Password'
        onChange = {handlePassword}
+       
        mb = {3}
         />
+          {error && (
+            <Center>
+ <Text color="red"  mb={2}>
+          {error}
+        </Text>
+            </Center>
+       
+      )}
 
  
    
@@ -72,16 +108,19 @@ const handleForm = () => {
       <Center>
     
       
-      <Button  colorScheme='red' onClick={handleForm}>  
-        <Link href={`${ name !=="" && password!==""  ? "/profile" : ""}`}>Log in </Link >
+      <Button  colorScheme='red' onClick={handleForm} mt={2}>  
+        <Link href={`${ name !=="" && password!=="" && !error && !nameError ? "/profile" : ""}`}>Log in </Link >
       </Button>
     
       </Center>
+      <Center>
       <Text mt={2} mb={2}>
       You don't have account yet,sign up.
       </Text>
+      </Center>
+      
       <Center>
-      <Button colorScheme="green">
+      <Button colorScheme="green" mt={2}>
       <Link href="/signup">Sign Up </Link >
         </Button>
       </Center>
