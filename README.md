@@ -1,7 +1,7 @@
 # Food Ordering Application
 ## This project utilizes Next.js, React.js, Redux Toolkit, React Hooks, and Chakra UI. Key features include:
 ***
-[Live](https://pizza-pizzo.vercel.app/)
+## [Live](https://pizza-pizzo.vercel.app/)
 
 ### Product Management: Users can add and remove products from their cart.
 ### Login Requirement: Users must log in before purchasing.
