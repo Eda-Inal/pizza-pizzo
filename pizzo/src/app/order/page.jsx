@@ -12,8 +12,7 @@ function Order() {
     const [orderAlert, setOrderAlert] = useState(false);
     const [confirmationAlert, setConfirmationAlert] = useState(false);
     const [close, setClose] = useState(false);
-    const totalAmount = useSelector((state) => state.pizza.totalAmount); // Assuming you have a totalAmount in your slice
-
+    const totalAmount = useSelector((state) => state.pizza.total); 
     const validate = () => {
         const newErrors = {};
         if (info.name.length < 5) newErrors.name = "Name must be at least 5 characters.";
