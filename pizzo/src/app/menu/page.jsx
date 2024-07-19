@@ -12,9 +12,9 @@ function Menu() {
     dispatch(addBasket(item));
     dispatch(calculateTotal())
     toast({
-      title: `${item.name} sepete eklendi.`,
+      title: `${item.name} added in card.`,
       status: 'success',
-      duration: 2000,
+      duration: 1000,
       isClosable: true,
       position: 'top-right',
     });
@@ -42,8 +42,7 @@ function Menu() {
               <CardBody>
                 <Heading size='md'>{item.name}</Heading>
                 <Text py='2'>
-                  Caffè latte is a coffee beverage of Italian origin made with espresso
-                  and steamed milk.
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iste autem sint
                 </Text>
               </CardBody>
               <CardFooter>

@@ -44,7 +44,7 @@ function Navbar() {
     }
     {
       !btn && (
-        <Button colorScheme="red" > <Link href="/login" ><Text fontSize='xl'>Log in</Text></Link></Button>
+        <Button colorScheme="blue" > <Link href="/login" ><Text fontSize='xl'>Log in</Text></Link></Button>
       )
     }
 </Hide>

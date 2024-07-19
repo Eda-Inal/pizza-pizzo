@@ -127,14 +127,20 @@ function Basket() {
             </Box>
             
             {showLoginBtn && (
-              <Button mt={6} width={100} colorScheme="blue" p={3}>
-                <Text fontSize="xl"><Link href='/login'>Log In</Link></Text>
+              <>
+              <Text fontSize="lg">Please log in first</Text>
+              <Button mt={2} width={100} colorScheme="blue" p={3}>
+                <Text fontSize="lg"><Link href='/login'>Log In</Link></Text>
               </Button>
+              </>
             )}
             {showAdresBtn && (
-              <Button mt={6} width={200} colorScheme="blue" p={3}>
+              <>
+              <Text fontSize="lg">Please fill the address</Text>
+              <Button mt={2} width={200} colorScheme="blue" p={3}>
                 <Text fontSize="xl"><Link href='/profile'>Complete Address</Link></Text>
               </Button>
+              </>
             )}
             {!showLoginBtn && !showAdresBtn && (
               <Button mt={6} width={100} colorScheme="green" p={3}>
