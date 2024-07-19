@@ -16,7 +16,7 @@ function Profile() {
 
 
   const [showBtn,setShowBtn] = useState(false)
-  const [textArea,setTextArea] =  useState("sd");
+  const [textArea, setTextArea] = useState(profile.adres || "");
   const handleChange = (e) => {
     setTextArea(e.target.value)
     setShowBtn(true)

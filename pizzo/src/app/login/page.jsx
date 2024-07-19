@@ -41,7 +41,7 @@ function Login() {
       dispatch(updateLogin({ name: name, password: password }));
       dispatch(changeBtn());
       setEmptyAlert(false);
-      setShowLoginBtn(false)
+    
     
     }
     else {

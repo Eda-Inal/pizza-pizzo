@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import img from "../../../public/4.jpg"
 import { useSelector, useDispatch } from 'react-redux'
-import { increaseAmount, decreaseAmount,setShowLoginBtn} from '../redux/pizzasSlice'
+import { increaseAmount, decreaseAmount,setShowLoginBtn, setShowAdresBtn } from '../redux/pizzasSlice'
 
 import { GoPlusCircle } from "react-icons/go";
 import { FiMinusCircle } from "react-icons/fi";
@@ -20,7 +20,20 @@ function Basket() {
   const signup = useSelector((state) => state.pizza.signup);
   const profile = useSelector((state) => state.pizza.profile);
   const showLoginBtn = useSelector((state) => state.pizza.showLoginBtn);
+  const showAdresBtn = useSelector((state) => state.pizza.showAdresBtn);
 
+  useEffect(() => {
+    if (!login.name) {
+      dispatch(setShowLoginBtn(true));
+      dispatch(setShowAdresBtn(false));
+    } else if (login.name && !profile.adres) {
+      dispatch(setShowLoginBtn(false));
+      dispatch(setShowAdresBtn(true));
+    } else if (login.name && profile.adres) {
+      dispatch(setShowLoginBtn(false));
+      dispatch(setShowAdresBtn(false));
+    }
+  }, [login.name, profile.adres, dispatch]);
 
   const handleAmountPlus = (id) => {
     dispatch(increaseAmount(id))
@@ -29,9 +42,7 @@ function Basket() {
     dispatch(decreaseAmount(id))
   }
   const handleClick = () => {
-if(login.name ===""){
-  dispatch(setShowLoginBtn(true));
-}
+
     
   
     
@@ -114,13 +125,24 @@ if(login.name ===""){
 
             </Box>
             
-            {!showLoginBtn && (
-              <Button mt={6} width={100} colorScheme="green" p={3} onClick={handleClick}>
-                  <Text fontSize="xl">Order</Text>
-                </Button>
-            )
+            {showLoginBtn && (
+              <Button mt={6} width={100} colorScheme="blue" p={3}>
+                <Text fontSize="xl"><Link href='/login'>Log In</Link></Text>
+              </Button>
+            )}
+            {showAdresBtn && (
+              <Button mt={6} width={200} colorScheme="blue" p={3}>
+                <Text fontSize="xl"><Link href='/profile'>Complete Address</Link></Text>
+              </Button>
+            )}
+            {!showLoginBtn && !showAdresBtn && (
+              <Button mt={6} width={100} colorScheme="green" p={3}>
+                <Text fontSize="xl"><Link href="/order">Order</Link></Text>
+              </Button>
+            )}
+            
               
-            }
+            
                 
               
             
@@ -128,17 +150,9 @@ if(login.name ===""){
           
              
                 
-                {
-                  showLoginBtn && (
-                    <>
-                    <Text fontSize="xl">You don't have address, first log in.</Text>
-                    <Button colorScheme="red" width={100} mt={6}>  <Text fontSize="xl" onClick={handleChange} >
-                      <Link href="/login" > Log in</Link>
-                    </Text></Button>
-                    </>
-                  )
-                }
-                
+               
+               
+               
                 
               
                 </>

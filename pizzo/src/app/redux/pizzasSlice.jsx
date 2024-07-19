@@ -24,7 +24,9 @@ export const pizzasSlice = createSlice({
             orders: ""
         },
         btnBasket: false,
-        showLoginBtn:false,
+        showLoginBtn: true,
+        showAdresBtn: false, 
+       
       
       
       
@@ -92,11 +94,20 @@ export const pizzasSlice = createSlice({
         changeBtn: (state) => {
             state.btn = true;
         },
-        
-        setShowLoginBtn : (state,action) => {
-state.showLoginBtn = action.payload;
+        setShowLoginBtn: (state, action) => { 
+            state.showLoginBtn = action.payload;
+        },
+        setShowAdresBtn: (state, action) => { 
+            state.showAdresBtn = action.payload;
+        },
+        updateAdres: (state, action) => { 
+            state.profile.adres = action.payload;
+        },
+        editProfile: (state, action) => { 
+            state.profile.adres = action.payload;
         }
-       
+
+        
       
        
 
@@ -105,5 +116,5 @@ state.showLoginBtn = action.payload;
 
     }
 })
-export const { addBasket, increaseAmount, decreaseAmount, calculateTotal, updateLogin, updateSignup, changeBtn,setShowLoginBtn } = pizzasSlice.actions;
+export const { addBasket, increaseAmount, decreaseAmount, calculateTotal, updateLogin, updateSignup, changeBtn, setShowLoginBtn, setShowAdresBtn, updateAdres ,editProfile } = pizzasSlice.actions;
 export default pizzasSlice.reducer;
