@@ -1,15 +1,12 @@
 import React from 'react'
 import Link from 'next/link';
-import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Show,Hide, Tooltip, useLatestRef} from '@chakra-ui/react'
+import { Flex, Spacer,Box,Heading,ButtonGroup,Button,Hide, Tooltip, } from '@chakra-ui/react'
 import { BsBasket } from "react-icons/bs";
 import { Text } from '@chakra-ui/react'
 import Home from '../page';
 import Image from 'next/image';
 import logo1 from "../../../public/logo.png"
-import { color } from 'framer-motion';
 import { useSelector } from 'react-redux';
-
-
 
 function Navbar() {
   const total = useSelector((state) => state.pizza.total);
@@ -20,9 +17,8 @@ function Navbar() {
       <Image
       src= {logo1}
       width = {150}
-     
-      />
-     
+       />
+    
     </Box>
    
     <Hide below='sm'>

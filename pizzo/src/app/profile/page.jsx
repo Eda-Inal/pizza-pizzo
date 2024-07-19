@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Container, Text, Box, FormControl, FormLabel, Input, Center, Button, Textarea, } from '@chakra-ui/react'
+import { Container, Text, Box, Button, Textarea, } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { editProfile } from '../redux/pizzasSlice'

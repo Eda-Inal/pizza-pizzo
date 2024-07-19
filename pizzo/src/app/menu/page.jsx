@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Card, CardHeader, Grid, Box, CardBody, CardFooter, Stack, Heading, Text, Button, Flex, Spacer,useToast } from '@chakra-ui/react'
+import { Card, Grid, Box, CardBody, CardFooter, Stack, Heading, Text, Button, Flex, Spacer,useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import pizzas from "../pizzas.json";
 import { useDispatch } from 'react-redux';

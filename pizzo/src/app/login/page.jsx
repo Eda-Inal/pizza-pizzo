@@ -2,7 +2,7 @@
 import React from 'react'
 import { Container, Text, Box, FormControl, FormLabel, Input, Center, Button, Stack, Alert, AlertIcon } from '@chakra-ui/react'
 import Link from 'next/link'
-import { updateLogin, changeBtn,setShowLoginBtn} from '../redux/pizzasSlice'
+import { updateLogin, changeBtn} from '../redux/pizzasSlice'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 
